@@ -1,0 +1,15 @@
+{
+  "input_hash": "967d9f8c08429825",
+  "inputs": {
+    "v": 1,
+    "model": "acestep-v15-turbo",
+    "prompt": "Slow, sparse, intimate instrumental for a quiet family scene at dawn. A solo plucked lyre plays a gentle pentatonic melody in a minor mode, a soft breathy bamboo flute answers, a low bowed string holds long notes underneath. East African highland folk feel, warm room sound, about 60 BPM, no drums, no vocals.",
+    "lyrics": "[Instrumental]",
+    "seed": 8,
+    "duration_s": 100,
+    "steps": 8,
+    "guidance": 7.0
+  },
+  "created": "2026-11-25T14:55:20+00:00",
+  "run_id": "20261125T145516Z"
+}

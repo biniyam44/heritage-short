@@ -1,0 +1,15 @@
+{
+  "input_hash": "1ae5d72ef16d72cc",
+  "inputs": {
+    "v": 1,
+    "model": "acestep-v15-turbo",
+    "prompt": "Minimal acoustic ambient score, very slow and calm. Soft fingerpicked lyre notes with lots of space between phrases, an airy wooden flute, long sustained low string tones, gentle warmth like early morning light. No drums, no vocals, no synthesizers.",
+    "lyrics": "[Instrumental]",
+    "seed": 7,
+    "duration_s": 100,
+    "steps": 8,
+    "guidance": 7.0
+  },
+  "created": "2026-11-25T14:55:25+00:00",
+  "run_id": "20261125T145516Z"
+}

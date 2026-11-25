@@ -86,6 +86,7 @@ in EXPERIMENTS.md).
 | Private term in a prompt (`private_terms.txt`) | refused before the request is sent, unless `ALLOW_PRIVATE=1` |
 | Wan clip not back from Kaggle | Ken Burns stand-in rendered (sidecar records `fallback_for`), so the film still assembles; `make check` FAILs while stand-ins remain |
 | A clip from an older storyboard version | impossible to import by mistake: clips come back named by input hash |
+| Fresh clone: no `inbox/`, no keys | committed outputs with a matching sidecar count as made, so `make film` reports `cached` and calls no model; the music takes' listening copies (`outputs/music/candidates/`, with sidecars) are kept, not deleted and not requested again |
 | Connection drops while downloading a kernel's output | `make kaggle-pull` retries up to 5 times without `-o`, so files that arrived are skipped and a broken one resumes where it stopped |
 | Kaggle mounts an older version of the job dataset | `make kaggle-push` starts the kernel only once Kaggle serves the `jobs.json` just uploaded (same `run_id`), and the kernel's copy of the worker exits at once if its `jobs.json` has another `run_id` (2026-11-25: a stale mount re-rendered 7 old clips, 2 h 54 min of GPU) |
 | One Wan job crashes (OOM, NaN/blank frames) | the worker logs it and moves to the next job; a rerun skips finished clips |

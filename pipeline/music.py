@@ -40,11 +40,18 @@ def main() -> None:
     alts = [(f"v{i}", take_inputs(mc, a["prompt"], a["seed"], lyrics)) for i, a in enumerate(m.get("alternatives", []), 1)]
     score_done = meta.get("input_hash") == key and not forced("music")
 
-    # every take that is neither imported nor waiting in inbox/ goes into one job bundle
+    # A listening copy committed in outputs/ with its sidecar counts as made. A fresh clone has no inbox/, and
+    # without this the stage deleted the six committed takes and asked for them again (clean-clone test, 2026-11-25).
+    cand = OUT / "music" / "candidates"
+
+    def kept(label: str, inp: dict) -> bool:
+        return (read_meta(cand / f"{label}.m4a") or {}).get("input_hash") == sha(inp)
+
+    # every take that is neither imported, nor waiting in inbox/, nor kept as a listening copy goes into one job bundle
     jobs = {}
     for item, inp in ([] if score_done else [("score", inputs)]) + alts:
         k = sha(inp)
-        if not (INBOX / "music" / f"{k}.wav").exists() and k not in jobs:
+        if not (INBOX / "music" / f"{k}.wav").exists() and not (item != "score" and kept(item, inp)) and k not in jobs:
             jobs[k] = {"key": k, "item": item, "prompt": inp["prompt"], "lyrics": lyrics, "seed": inp["seed"]}
     if jobs:
         bundle = write_bundle("music", list(jobs.values()), {k: mc[k] for k in ("model", "steps", "guidance", "duration_s")})
@@ -57,19 +64,21 @@ def main() -> None:
             say("music", "ACE-Step worker failed (is the server running? see kaggle/README.md)")
 
     if alts:                               # small AAC copies to listen to, and an index of what each one is
-        cand = OUT / "music" / "candidates"
         cand.mkdir(parents=True, exist_ok=True)
         rows = ["| take | seed | status | prompt |", "|---|---|---|---|"]
+        ready = 0
         for label, inp in alts:
-            src = INBOX / "music" / f"{sha(inp)}.wav"
-            dst = cand / f"{label}.m4a"
-            if src.exists():
+            src, dst = INBOX / "music" / f"{sha(inp)}.wav", cand / f"{label}.m4a"
+            if src.exists() and not kept(label, inp):
                 ffmpeg("-i", src, "-c:a", "aac", "-b:a", "160k", dst)
-            else:
+                write_meta(dst, inp)
+            elif not src.exists() and not kept(label, inp):   # a copy of an older take no longer matches its prompt
                 dst.unlink(missing_ok=True)
-            rows.append(f"| {label} | {inp['seed']} | {'ready' if src.exists() else 'pending'} | {inp['prompt']} |")
+                dst.with_suffix(".json").unlink(missing_ok=True)
+            ok = kept(label, inp)
+            ready += ok
+            rows.append(f"| {label} | {inp['seed']} | {'ready' if ok else 'pending'} | {inp['prompt']} |")
         (cand / "index.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
-        ready = sum(1 for _, inp in alts if (INBOX / "music" / f"{sha(inp)}.wav").exists())
         say("music", f"alternatives: {ready}/{len(alts)} ready in {cand} (index.md says which is which)")
 
     if score_done:

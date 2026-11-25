@@ -1,0 +1,15 @@
+{
+  "input_hash": "e313f3d9aab20258",
+  "inputs": {
+    "v": 1,
+    "model": "acestep-v15-turbo",
+    "prompt": "Ethiopian tizita-style instrumental ballad, slow and nostalgic, pentatonic minor scale. A single plucked krar lyre leads the melody, a one-string masenqo fiddle sustains long mournful notes, a soft washint flute breathes between phrases. Acoustic, intimate, no percussion, no vocals.",
+    "lyrics": "[Instrumental]",
+    "seed": 8,
+    "duration_s": 100,
+    "steps": 8,
+    "guidance": 7.0
+  },
+  "created": "2026-11-25T14:55:23+00:00",
+  "run_id": "20261125T145516Z"
+}
