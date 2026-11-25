@@ -33,9 +33,9 @@
     "real_person": false
   },
   "music": {
-    "prompt": "Ethiopian-inspired instrumental film score, gentle krar lyre melody, soft bowed masenqo, airy washint bamboo flute, slow tempo, warm tender morning mood, tizita scale, sparse, leaves space for narration, no vocals",
+    "prompt": "Slow, sparse, intimate instrumental for a quiet family scene at dawn. A solo plucked lyre plays a gentle pentatonic melody in a minor mode, a soft breathy bamboo flute answers, a low bowed string holds long notes underneath. East African highland folk feel, warm room sound, about 60 BPM, no drums, no vocals.",
     "lyrics": "[Instrumental]",
-    "seed": 42,
+    "seed": 7,
     "alternatives": [
       {
         "prompt": "Slow, sparse, intimate instrumental for a quiet family scene at dawn. A solo plucked lyre plays a gentle pentatonic melody in a minor mode, a soft breathy bamboo flute answers, a low bowed string holds long notes underneath. East African highland folk feel, warm room sound, about 60 BPM, no drums, no vocals.",

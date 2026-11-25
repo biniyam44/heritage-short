@@ -1,18 +1,24 @@
 {
-  "input_hash": "ff293728e8ac96ef",
+  "input_hash": "931630acfe327e34",
   "inputs": {
     "v": 1,
-    "backend": "kenburns",
+    "backend": "wan",
     "keyframe": "9cff2dbb5d284808",
-    "camera": "static",
-    "seconds": 8,
-    "size": [
-      1080,
-      1920
-    ],
-    "fps": 24
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. her hand keeps the can tilted over the mitad and pours one thin stream of batter in a slow spiral until the end of the clip, steam rises",
+    "negative": "blurry, distorted face, deformed hands, extra fingers, text, watermark, subtitles, still image, overexposed, low quality",
+    "seed": 203,
+    "params": {
+      "model": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+      "width": 480,
+      "height": 832,
+      "num_frames": 121,
+      "fps": 24,
+      "steps": 30,
+      "guidance": 5.0,
+      "dtype": "fp16"
+    }
   },
-  "created": "2026-11-25T14:03:11+00:00",
-  "run_id": "20261125T140309Z",
-  "fallback_for": "931630acfe327e34"
+  "created": "2026-11-25T16:08:21+00:00",
+  "run_id": "20261125T160821Z",
+  "source": "kaggle"
 }

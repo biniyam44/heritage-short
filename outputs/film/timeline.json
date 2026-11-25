@@ -160,28 +160,30 @@
   ],
   "loudness": {
     "pass1": {
-      "input_i": "-18.46",
-      "input_tp": "-1.93",
-      "input_lra": "5.80",
-      "input_thresh": "-29.11",
-      "output_i": "-14.10",
+      "input_i": "-18.50",
+      "input_tp": "-1.94",
+      "input_lra": "8.20",
+      "input_thresh": "-29.47",
+      "output_i": "-14.38",
       "output_tp": "-1.00",
-      "output_lra": "5.00",
-      "output_thresh": "-24.70",
+      "output_lra": "6.90",
+      "output_thresh": "-25.18",
       "normalization_type": "dynamic",
-      "target_offset": "0.10"
+      "target_offset": "0.38"
     },
     "pass2": {
-      "input_i": "-18.46",
-      "input_tp": "-1.93",
-      "input_lra": "5.80",
-      "input_thresh": "-29.11",
-      "output_i": "-14.13",
-      "output_tp": "-1.50",
-      "output_lra": "4.70",
-      "output_thresh": "-24.72",
+      "input_i": "-18.50",
+      "input_tp": "-1.94",
+      "input_lra": "8.20",
+      "input_thresh": "-29.47",
+      "output_i": "-14.33",
+      "output_tp": "-2.00",
+      "output_lra": "6.60",
+      "output_thresh": "-25.11",
       "normalization_type": "dynamic",
-      "target_offset": "0.13"
-    }
+      "target_offset": "0.33"
+    },
+    "tp_target": -2.0,
+    "encoded_tp": -1.57
   }
 }

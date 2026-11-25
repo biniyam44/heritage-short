@@ -3,8 +3,9 @@
 1. Timeline: each shot lasts max(duration_s, lead-in + narration + tail), rounded to whole frames.
 2. Audio: narration lines level-matched and placed on one bed; the score is ducked under it with
    sidechaincompress (threshold 0.02, ratio 6, attack 300 ms, release 1500 ms); then a two-pass
-   loudnorm to -14 LUFS, true peak aimed 0.5 dB under -1 dBTP so the AAC file still meets it
-   (pass 1 measures, pass 2 applies linearly).
+   loudnorm to -14 LUFS (pass 1 measures, pass 2 applies linearly). The mix is encoded to AAC once and
+   that file's true peak is measured: above -1 dBTP, pass 2 runs again 0.5 dB lower (up to 3 times).
+   Both exports copy this exact AAC, so `make check` measures the audio that was verified here.
 3. Video per export: each clip is normalised (time-fit, scale/crop or blurred pillarbox), the end card is
    added, everything is concatenated, and English subtitles (at most 2 lines of ~40 chars, inside the
    9:16 safe area) plus the end-card text are burned in as Pillow-rendered PNG overlays. That works with
@@ -25,7 +26,7 @@ from .common import (CONFIG, OUT, WORK, changed_keys, duration, fail, ffmpeg, fi
                      loudnorm_json, read_meta, say, scaled, sha, write_meta, x264_preset)
 from .consent import require
 
-STAGE_VERSION = 3          # 2: subtitles stay up long enough to read; 3: true-peak headroom for AAC
+STAGE_VERSION = 4          # 2: subtitles readable longer; 3: true-peak headroom; 4: AAC measured, then copied
 SR = 48000
 
 
@@ -203,18 +204,27 @@ def build_mix(rows: list[dict], total: float, music, out_wav, work) -> dict:
     ffmpeg("-i", music, "-i", bed_path, "-filter_complex", graph, "-map", "[mix]", "-c:a", "pcm_f32le", raw)
 
     L, m = a["loudness"], loudnorm_json(raw)             # pass 1: measure
-    # Aim 0.5 dB under the true-peak spec: AAC encoding adds peaks after this step (a -1 dBTP mix measured
-    # -0.8 dBTP in the encoded film on 2026-11-25), and make check measures the encoded film.
+    # AAC encoding adds peaks after loudnorm, by an amount that depends on the music: +0.2 dB on the first
+    # score, +0.5 dB on the plucked-lyre take v1 (2026-11-25). So encode once, measure the AAC itself, and mix
+    # again 0.5 dB lower until it meets the spec. Both exports then copy exactly this AAC (see main()).
+    aac = out_wav.with_suffix(".m4a")
     tp = L["TP"] - 0.5
-    second = (f"loudnorm=I={L['I']}:TP={tp}:LRA={L['LRA']}:measured_I={m['input_i']}:"
-              f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
-              f"offset={m['target_offset']}:linear=true:print_format=json")
-    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-nostdin", "-y", "-i", str(raw), "-af", second,
-                        "-ar", str(SR), "-c:a", "pcm_s16le", str(out_wav)], capture_output=True, text=True)
-    if r.returncode:
-        raise RuntimeError(f"loudnorm pass 2 failed: {r.stderr[-1500:]}")
-    p2 = json.loads(r.stderr[r.stderr.rindex("{"): r.stderr.rindex("}") + 1])   # pass 2: applied
-    return {"pass1": m, "pass2": p2}
+    for _ in range(4):
+        second = (f"loudnorm=I={L['I']}:TP={tp}:LRA={L['LRA']}:measured_I={m['input_i']}:"
+                  f"measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
+                  f"offset={m['target_offset']}:linear=true:print_format=json")
+        r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-nostdin", "-y", "-i", str(raw), "-af", second,
+                            "-ar", str(SR), "-c:a", "pcm_s16le", str(out_wav)], capture_output=True, text=True)
+        if r.returncode:
+            raise RuntimeError(f"loudnorm pass 2 failed: {r.stderr[-1500:]}")
+        p2 = json.loads(r.stderr[r.stderr.rindex("{"): r.stderr.rindex("}") + 1])   # pass 2: applied
+        ffmpeg("-i", out_wav, "-c:a", "aac", "-b:a", "192k", "-ar", SR, aac)
+        encoded_tp = float(loudnorm_json(aac)["input_tp"])
+        if encoded_tp <= L["TP"]:
+            break
+        say("assemble", f"true peak after AAC is {encoded_tp:.2f} dBTP (spec {L['TP']}): mixing again 0.5 dB lower")
+        tp -= 0.5
+    return {"pass1": m, "pass2": p2, "tp_target": tp, "encoded_tp": encoded_tp}
 
 
 # ---------------------------------------------------------------- video
@@ -296,10 +306,10 @@ def main() -> None:
         (work / f"{name}.txt").write_text("".join(f"file '{p.name}'\n" for p in segs))
         text_args, graph = text_overlays(cue_list, sb["end_card"]["lines"], t, end_dur, w, h, work, name)
         tmp = film / f"{name}.tmp.mp4"
-        ffmpeg("-f", "concat", "-safe", "0", "-i", f"{name}.txt", "-i", "mix.wav", *text_args, "-filter_complex", graph,
+        ffmpeg("-f", "concat", "-safe", "0", "-i", f"{name}.txt", "-i", "mix.m4a", *text_args, "-filter_complex", graph,
                "-map", "[vout]", "-map", "1:a", "-c:v", "libx264", "-preset", x264_preset(), "-crf", a["crf"],
-               "-pix_fmt", "yuv420p", "-profile:v", "high", "-r", a["fps"], "-c:a", "aac", "-b:a", "192k",
-               "-ar", SR, "-t", f"{total:.3f}", "-movflags", "+faststart", "-metadata", f"title={sb['title']}",
+               "-pix_fmt", "yuv420p", "-profile:v", "high", "-r", a["fps"], "-c:a", "copy",   # the measured AAC
+               "-t", f"{total:.3f}", "-movflags", "+faststart", "-metadata", f"title={sb['title']}",
                "-metadata", "comment=Made with AI. See the end card and README for the models used.",
                tmp, cwd=work)
         os.replace(tmp, film / f"{name}.mp4")
