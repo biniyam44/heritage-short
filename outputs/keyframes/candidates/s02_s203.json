@@ -1,0 +1,18 @@
+{
+  "input_hash": "172385fcb61eacf6",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. Close-up, seen from her right side: a woman's single dark brown hand, in the sleeve of her dark cardigan, holds a wooden spoon and stirs thin grey-beige fermented teff batter in a wide clay pot on an earthen floor. The pot and the hand fill the frame. Only this one arm is in the picture, reaching in from the right edge of the frame; her other hand and her face are out of frame Reference image: image 1 is a style frame; take only its light, colours and materials, not its layout. Follow the description above for framing and action.",
+    "seed": 203,
+    "size": [
+      720,
+      1280
+    ],
+    "refs": [
+      "2c98ed0038a06610"
+    ]
+  },
+  "created": "2026-11-25T14:01:13+00:00",
+  "run_id": "20261125T140049Z"
+}

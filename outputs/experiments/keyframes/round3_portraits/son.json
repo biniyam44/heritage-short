@@ -1,0 +1,16 @@
+{
+  "input_hash": "b83c6f1d42442c14",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "prompt": "Warm realistic photograph inside a traditional rural Ethiopian home kitchen with mud-plastered walls and an earthen floor, woven sefed baskets on the wall, a black clay jebena coffee pot, soft natural light, warm earth tones, gentle film grain, 35mm documentary look. Head-and-shoulders portrait of a fictional Ethiopian Habesha boy of about twelve with dark brown skin, short curly black hair and a plain blue sweater, sleepy gentle face, looking at the camera, plain neutral background, soft even light.",
+    "seed": 32,
+    "size": [
+      1024,
+      768
+    ],
+    "refs": []
+  },
+  "created": "2026-11-24T19:21:54+00:00",
+  "run_id": "20261124T192051Z"
+}

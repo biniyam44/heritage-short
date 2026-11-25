@@ -1,0 +1,172 @@
+{
+  "input_hash": "771b08fc28a8669b",
+  "inputs": {
+    "v": 3,
+    "clips": {
+      "s01": "14cff27b0e70b7a6",
+      "s02": "1ad24c668477c3e6",
+      "s03": "4712c1110e3bd691",
+      "s04": "d4224d0365d825d7",
+      "s05": "f98d5c88fe423473",
+      "s06": "a748aaeb98f4688c",
+      "s07": "c86ea39474dfaa2f",
+      "s08": "8059a444f5696d81",
+      "s09": "7e1e412e6167e4e1"
+    },
+    "narration": {
+      "s01": "668036fd08849e2f",
+      "s02": "07cd7c05f6b2334d",
+      "s03": "e13902ad0eaca99b",
+      "s04": "ce0e4cbc16ba7539",
+      "s05": "ff8a282a8cdb2193",
+      "s06": "c1a33c3bc3e3135d",
+      "s07": "161e59c13c8e5bee",
+      "s08": "e940f38d3bb59262",
+      "s09": "f9aebb4f33ebe1e0"
+    },
+    "music": "afac3bcbc6157eee",
+    "timeline": [
+      {
+        "id": "s01",
+        "start": 0.0,
+        "dur": 8.0,
+        "narr": "narration/s01.wav",
+        "narr_len": 5.72,
+        "subtitle": "Before the sun rises, the mother gets up and begins her work."
+      },
+      {
+        "id": "s02",
+        "start": 8.0,
+        "dur": 8.417,
+        "narr": "narration/s02.wav",
+        "narr_len": 7.4,
+        "subtitle": "Her son is still asleep, but she prepares the fermented batter."
+      },
+      {
+        "id": "s03",
+        "start": 16.417,
+        "dur": 8.0,
+        "narr": "narration/s03.wav",
+        "narr_len": 4.88,
+        "subtitle": "When the mitad is hot, she slowly pours the batter."
+      },
+      {
+        "id": "s04",
+        "start": 24.417,
+        "dur": 8.0,
+        "narr": "narration/s04.wav",
+        "narr_len": 5.8,
+        "subtitle": "Eyes appear on the injera. The smell of fresh injera fills the house."
+      },
+      {
+        "id": "s05",
+        "start": 32.417,
+        "dur": 8.0,
+        "narr": "narration/s05.wav",
+        "narr_len": 6.52,
+        "subtitle": "She takes one out and bakes the next, until there is enough for her family."
+      },
+      {
+        "id": "s06",
+        "start": 40.417,
+        "dur": 8.0,
+        "narr": "narration/s06.wav",
+        "narr_len": 4.56,
+        "subtitle": "Her son wakes up and comes to his mother."
+      },
+      {
+        "id": "s07",
+        "start": 48.417,
+        "dur": 8.0,
+        "narr": "narration/s07.wav",
+        "narr_len": 6.6,
+        "subtitle": "His mother serves injera and shiro. He sits down beside her."
+      },
+      {
+        "id": "s08",
+        "start": 56.417,
+        "dur": 8.792,
+        "narr": "narration/s08.wav",
+        "narr_len": 7.76,
+        "subtitle": "But today, before he eats, her son first offers his mother a gursha."
+      },
+      {
+        "id": "s09",
+        "start": 65.208,
+        "dur": 8.0,
+        "narr": "narration/s09.wav",
+        "narr_len": 6.2,
+        "subtitle": "Sometimes love needs no words. One shared bite is enough."
+      }
+    ],
+    "end_card": {
+      "lines": [
+        "ፀሐይ ሳትወጣ",
+        "Before the Sun Rises",
+        "Made with AI: Gemini (voice), FLUX.2 (images), Wan 2.2 (motion), ACE-Step (music). Fictional characters."
+      ],
+      "duration_s": 3
+    },
+    "title": "ፀሐይ ሳትወጣ — Before the Sun Rises",
+    "config": {
+      "fps": 24,
+      "master": [
+        1080,
+        1920
+      ],
+      "exports": [
+        {
+          "name": "heritage_9x16",
+          "width": 1080,
+          "height": 1920,
+          "fit": "cover"
+        },
+        {
+          "name": "heritage_16x9",
+          "width": 1920,
+          "height": 1080,
+          "fit": "blurpad"
+        }
+      ],
+      "lead_in_s": 0.4,
+      "tail_s": 0.6,
+      "max_stretch": 1.5,
+      "end_card_s": 3,
+      "narration_lufs": -18,
+      "music_gain_db": -4,
+      "duck": {
+        "threshold": 0.02,
+        "ratio": 6,
+        "attack_ms": 300,
+        "release_ms": 1500
+      },
+      "loudness": {
+        "I": -14,
+        "TP": -1,
+        "LRA": 11
+      },
+      "sub_max_chars": 40,
+      "sub_max_lines": 2,
+      "font_file": "",
+      "font_file_ethiopic": "",
+      "crf": 20,
+      "preset": "medium"
+    },
+    "exports": [
+      {
+        "name": "heritage_9x16",
+        "width": 1080,
+        "height": 1920,
+        "fit": "cover"
+      },
+      {
+        "name": "heritage_16x9",
+        "width": 1920,
+        "height": 1080,
+        "fit": "blurpad"
+      }
+    ]
+  },
+  "created": "2026-11-25T05:19:40+00:00",
+  "run_id": "20261125T051821Z"
+}

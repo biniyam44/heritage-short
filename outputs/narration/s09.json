@@ -1,0 +1,13 @@
+{
+  "input_hash": "8ea2645b981978c2",
+  "inputs": {
+    "v": 1,
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Sulafat",
+    "style": "warm, slow and tender, like telling a story at bedtime",
+    "text": "አንዳንዴ ፍቅርን ለመግለጽ ቃል አያስፈልግም። አንዲት ጉርሻ ትበቃለች።",
+    "language": "am"
+  },
+  "created": "2026-11-25T05:18:21+00:00",
+  "run_id": "20261125T051815Z"
+}

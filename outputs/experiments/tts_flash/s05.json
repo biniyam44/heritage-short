@@ -1,0 +1,13 @@
+{
+  "input_hash": "4b065d07e80ba781",
+  "inputs": {
+    "v": 1,
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "style": "warm, slow and tender, like telling a story at bedtime",
+    "text": "አንዱን አውጥታ ሌላውን ትጋግራለች። ለቤተሰቧ በቂ እስኪሆን ድረስ።",
+    "language": "am"
+  },
+  "created": "2026-11-24T18:49:11+00:00",
+  "run_id": "20261124T184702Z"
+}

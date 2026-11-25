@@ -1,0 +1,19 @@
+{
+  "input_hash": "b0741eb416372568",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. Extreme close-up of injera cooking on a black clay mitad: a thin, pale beige, spongy flatbread whose whole surface is covered with thousands of tiny holes called eyes, steam rising Reference images: image 1 is a real photo of the surface of injera, covered with tiny holes called eyes: make them look like the photo; image 2 is a real photo of injera cooking on a black clay mitad on a mud stove, with steam: make them look like the photo. Follow the description above for pose, framing and action.",
+    "seed": 204,
+    "size": [
+      720,
+      1280
+    ],
+    "refs": [
+      "a2a40099fad312d7",
+      "e45429abda8e1001"
+    ]
+  },
+  "created": "2026-11-25T05:58:58+00:00",
+  "run_id": "20261125T055730Z"
+}

@@ -1,0 +1,16 @@
+{
+  "input_hash": "a55ba97b2d6c75dc",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-9b",
+    "prompt": "Realistic documentary photograph, 35mm, natural skin texture. Head-and-shoulders portrait of a fictional twelve-year-old Ethiopian boy from the Ethiopian highlands, dark brown skin, short tightly curled black hair, a plain blue sweater, a sleepy gentle face, looking at the camera, plain neutral background, soft even daylight.",
+    "seed": 32,
+    "size": [
+      768,
+      1024
+    ],
+    "refs": []
+  },
+  "created": "2026-11-25T05:54:43+00:00",
+  "run_id": "20261125T055400Z"
+}

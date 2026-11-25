@@ -1,0 +1,22 @@
+make check on the first preview film, mixed with loudnorm TP=-1 (assemble STAGE_VERSION 2); run 2026-11-25 08:15 EAT
+.venv/bin/python -m pipeline.check
+  PASS  storyboard matches schema
+  PASS  storyboard is your story
+  PASS  8-12 shots  (9)
+  PASS  consent records for real people
+  PASS  end card says AI
+  FAIL  every narration line has a voice take  (s09: run `make narration`)
+  PASS  heritage_9x16: H.264/AAC 1080x1920  (h264/aac 1080x1920)
+  PASS  heritage_9x16: 60-90 s  (76.2s)
+  FAIL  heritage_9x16: loudness  (-14.1 LUFS, true peak -0.8 dBTP)
+  PASS  heritage_16x9: H.264/AAC 1920x1080  (h264/aac 1920x1080)
+  PASS  heritage_16x9: 60-90 s  (76.2s)
+  FAIL  heritage_16x9: loudness  (-14.1 LUFS, true peak -0.8 dBTP)
+  PASS  subtitles <= 2 lines of ~40 chars
+  PASS  subtitle reading speed <= 20 chars/s
+  PASS  no stand-ins (pending Wan clips / placeholder score)
+  PASS  no secrets in repo files
+  PASS  .env is git-ignored
+  PASS  runs.jsonl has logged calls  (103)
+check: 3 FAIL, 0 WARN
+make: *** [check] Error 1

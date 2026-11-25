@@ -1,0 +1,93 @@
+# Pipeline settings. No secrets here: keys live in .env.
+# Every value that changes an output is part of that output's cache key, so editing
+# e.g. [image].model regenerates every keyframe and nothing else.
+# Model IDs and request formats were checked against the official docs on 2026-11-24.
+
+[text]                              # stage 1: storyboard drafting (Gemini Interactions API)
+model = "gemini-3.8-flash"          # cheaper alternative: "gemini-3.5-flash-lite"
+fallback_models = ["gemini-3.5-flash-lite"]   # tried in order if the model stays overloaded (503/429) after retries
+api_revision = "2026-05-20"         # revision used in Google's text examples ("" = omit header)
+thinking_level = "low"              # minimal | low | medium | high | xhigh
+
+[tts]                               # stage 5: narration
+model = "gemini-3.8-flash-lite-tts"   # Amharic ok; "gemini-3.8-flash-tts" (130+ langs) hit its 10/day free quota on 2026-11-24
+min_interval_s = 21                 # free tier: 3 requests/min and 10/day per model (make smoke uses 1)
+
+[gemini]
+store = false                       # ask the API not to keep interactions server-side
+
+[image]                             # stage 2: reference sheet + keyframes (Cloudflare Workers AI)
+model = "@cf/black-forest-labs/flux-2-klein-4b"   # or "@cf/black-forest-labs/flux-1-schnell" (square only, no refs)
+portrait_model = "@cf/black-forest-labs/flux-2-klein-9b"   # faces: 4B gave generic, non-Habesha faces (2026-11-25); ~8x the neurons
+width = 720                         # FLUX.2 accepts 256-1920; 9:16 master
+height = 1280
+ref_width = 768                     # character portrait (head and shoulders); 768x1024 is under 1 MP
+ref_height = 1024
+use_references = true               # send ref-sheet images as input_image_0..3 (FLUX.2 only)
+steps = 4                           # used by flux-1-schnell only (klein is fixed at 4 steps)
+
+[video]                             # stage 3: moving shots on a Kaggle T4 (kaggle/wan22_i2v.py)
+model = "Wan-AI/Wan2.2-TI2V-5B-Diffusers"
+width = 480                         # draft at 480p; multiples of 32
+height = 832
+num_frames = 121                    # must be 4k+1; 121 frames at 24 fps is about 5 s
+fps = 24
+steps = 30
+guidance = 5.0
+dtype = "fp16"                      # T4 has no fast bf16
+negative = "blurry, distorted face, deformed hands, extra fingers, text, watermark, subtitles, still image, overexposed, low quality"
+
+[music]                             # stage 4: original score (kaggle/acestep_music.py)
+backend = "kaggle"                  # acestep_api = a server you start (e.g. on your Mac) | kaggle
+api_url = "http://localhost:8001"   # override with ACESTEP_API_URL in .env
+model = "acestep-v15-turbo"
+steps = 8
+guidance = 7.0                      # ignored by turbo models
+duration_s = 100                    # longer than the film; assembly trims and fades
+
+[assembly]                          # stage 6: FFmpeg
+fps = 24
+master = [1080, 1920]               # size of Ken Burns clips
+exports = [
+  { name = "heritage_9x16", width = 1080, height = 1920, fit = "cover" },
+  { name = "heritage_16x9", width = 1920, height = 1080, fit = "blurpad" },
+]
+lead_in_s = 0.4                     # silence before each narration line
+tail_s = 0.6                        # breath after it
+max_stretch = 1.5                   # slow a short clip at most this much, then hold its last frame
+end_card_s = 3
+narration_lufs = -18                # per-line level match before the mix
+music_gain_db = -4
+duck = { threshold = 0.02, ratio = 6, attack_ms = 300, release_ms = 1500 }
+loudness = { I = -14, TP = -1, LRA = 11 }
+sub_max_chars = 40
+sub_max_lines = 2
+font_file = ""                      # TTF/OTF for burned-in text; "" = Arial Bold / Helvetica / DejaVu Sans
+font_file_ethiopic = ""             # for Ge'ez-script lines; "" = Kefa (macOS) / Noto Sans Ethiopic / Abyssinica SIL
+crf = 20
+preset = "medium"
+
+[mock]                              # MOCK=1: offline, no keys, outputs in build/mock/
+scale = 0.5                         # render at half size for speed
+preset = "ultrafast"
+words_per_s = 2.5                   # placeholder "speech" length
+
+[retries]
+attempts = 4
+base_delay_s = 2
+max_wait_s = 120                    # a Retry-After longer than this (e.g. a daily quota) stops instead of waiting
+
+[prices]                            # list prices for the COSTS.md list-price equivalent (checked 2026-11-24)
+checked_on = "2026-11-24"
+# USD per 1M tokens, paid tier, through 2026-12-31 (aistudio.google.com/docs/pricing). Free tier = $0 actual.
+"gemini-3.8-flash" = { input = 0.75, output = 3.75 }
+"gemini-3.5-flash-lite" = { input = 0.30, output = 2.50 }
+"gemini-3.8-flash-tts" = { input = 0.50, output_audio = 9.00 }
+"gemini-3.8-flash-lite-tts" = { input = 0.50, output_audio = 6.00 }
+# Cloudflare Workers AI (developers.cloudflare.com/workers-ai/platform/pricing): 10,000 neurons/day free
+cloudflare_usd_per_1k_neurons = 0.011
+"@cf/black-forest-labs/flux-2-klein-4b" = { neurons_per_output_tile = 26.05, neurons_per_input_tile = 5.37 }
+"@cf/black-forest-labs/flux-1-schnell" = { neurons_per_output_tile = 4.80, neurons_per_step = 9.60 }
+"@cf/black-forest-labs/flux-2-klein-9b" = { neurons_first_mp = 1363.64, neurons_per_extra_mp = 181.82, neurons_per_input_mp = 181.82 }   # checked 2026-11-25
+# GPU list-price equivalent, USD per GPU-hour. VERIFY before quoting: cloud.google.com/compute/gpus-pricing
+gpu_usd_per_hour = { T4 = 0.35 }

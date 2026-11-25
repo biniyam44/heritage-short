@@ -1,0 +1,16 @@
+{
+  "input_hash": "046aae3adaca52fc",
+  "inputs": {
+    "v": 1,
+    "model": "acestep-v15-turbo",
+    "prompt": "Ethiopian-inspired instrumental film score, gentle krar lyre melody, soft bowed masenqo, airy washint bamboo flute, slow tempo, warm tender morning mood, tizita scale, sparse, leaves space for narration, no vocals",
+    "lyrics": "[Instrumental]",
+    "seed": 42,
+    "duration_s": 100,
+    "steps": 8,
+    "guidance": 7.0
+  },
+  "created": "2026-11-25T05:09:49+00:00",
+  "run_id": "20261125T050949Z",
+  "source": "kaggle"
+}

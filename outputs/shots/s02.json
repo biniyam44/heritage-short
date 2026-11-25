@@ -1,0 +1,18 @@
+{
+  "input_hash": "11bc5f2feace4f57",
+  "inputs": {
+    "v": 1,
+    "backend": "kenburns",
+    "keyframe": "24831199381ff557",
+    "camera": "static",
+    "seconds": 8,
+    "size": [
+      1080,
+      1920
+    ],
+    "fps": 24
+  },
+  "created": "2026-11-25T14:03:10+00:00",
+  "run_id": "20261125T140309Z",
+  "fallback_for": "5cc52fb0d787074e"
+}

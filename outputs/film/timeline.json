@@ -1,0 +1,187 @@
+{
+  "total_s": 76.208,
+  "end_card_s": 3,
+  "shots": [
+    {
+      "id": "s01",
+      "start": 0.0,
+      "dur": 8.0,
+      "narr": "narration/s01.wav",
+      "narr_len": 5.72,
+      "subtitle": "Before the sun rises, the mother gets up and begins her work."
+    },
+    {
+      "id": "s02",
+      "start": 8.0,
+      "dur": 8.417,
+      "narr": "narration/s02.wav",
+      "narr_len": 7.4,
+      "subtitle": "Her son is still asleep, but she prepares the fermented batter."
+    },
+    {
+      "id": "s03",
+      "start": 16.417,
+      "dur": 8.0,
+      "narr": "narration/s03.wav",
+      "narr_len": 4.88,
+      "subtitle": "When the mitad is hot, she slowly pours the batter."
+    },
+    {
+      "id": "s04",
+      "start": 24.417,
+      "dur": 8.0,
+      "narr": "narration/s04.wav",
+      "narr_len": 5.8,
+      "subtitle": "Eyes appear on the injera. The smell of fresh injera fills the house."
+    },
+    {
+      "id": "s05",
+      "start": 32.417,
+      "dur": 8.0,
+      "narr": "narration/s05.wav",
+      "narr_len": 6.52,
+      "subtitle": "She takes one out and bakes the next, until there is enough for her family."
+    },
+    {
+      "id": "s06",
+      "start": 40.417,
+      "dur": 8.0,
+      "narr": "narration/s06.wav",
+      "narr_len": 4.56,
+      "subtitle": "Her son wakes up and comes to his mother."
+    },
+    {
+      "id": "s07",
+      "start": 48.417,
+      "dur": 8.0,
+      "narr": "narration/s07.wav",
+      "narr_len": 6.6,
+      "subtitle": "His mother serves injera and shiro. He sits down beside her."
+    },
+    {
+      "id": "s08",
+      "start": 56.417,
+      "dur": 8.792,
+      "narr": "narration/s08.wav",
+      "narr_len": 7.76,
+      "subtitle": "But today, before he eats, her son first offers his mother a gursha."
+    },
+    {
+      "id": "s09",
+      "start": 65.208,
+      "dur": 8.0,
+      "narr": "narration/s09.wav",
+      "narr_len": 6.2,
+      "subtitle": "Sometimes love needs no words. One shared bite is enough."
+    }
+  ],
+  "cues": [
+    {
+      "shot": "s01",
+      "start": 0.4,
+      "end": 6.12,
+      "lines": [
+        "Before the sun rises, the mother",
+        "gets up and begins her work."
+      ]
+    },
+    {
+      "shot": "s02",
+      "start": 8.4,
+      "end": 15.8,
+      "lines": [
+        "Her son is still asleep, but she",
+        "prepares the fermented batter."
+      ]
+    },
+    {
+      "shot": "s03",
+      "start": 16.82,
+      "end": 21.7,
+      "lines": [
+        "When the mitad is hot, she",
+        "slowly pours the batter."
+      ]
+    },
+    {
+      "shot": "s04",
+      "start": 24.82,
+      "end": 30.62,
+      "lines": [
+        "Eyes appear on the injera. The smell",
+        "of fresh injera fills the house."
+      ]
+    },
+    {
+      "shot": "s05",
+      "start": 32.82,
+      "end": 39.34,
+      "lines": [
+        "She takes one out and bakes the next,",
+        "until there is enough for her family."
+      ]
+    },
+    {
+      "shot": "s06",
+      "start": 40.82,
+      "end": 45.38,
+      "lines": [
+        "Her son wakes up and",
+        "comes to his mother."
+      ]
+    },
+    {
+      "shot": "s07",
+      "start": 48.82,
+      "end": 55.42,
+      "lines": [
+        "His mother serves injera and",
+        "shiro. He sits down beside her."
+      ]
+    },
+    {
+      "shot": "s08",
+      "start": 56.82,
+      "end": 64.58,
+      "lines": [
+        "But today, before he eats, her son",
+        "first offers his mother a gursha."
+      ]
+    },
+    {
+      "shot": "s09",
+      "start": 65.61,
+      "end": 71.81,
+      "lines": [
+        "Sometimes love needs no words.",
+        "One shared bite is enough."
+      ]
+    }
+  ],
+  "loudness": {
+    "pass1": {
+      "input_i": "-18.46",
+      "input_tp": "-1.93",
+      "input_lra": "5.80",
+      "input_thresh": "-29.11",
+      "output_i": "-14.10",
+      "output_tp": "-1.00",
+      "output_lra": "5.00",
+      "output_thresh": "-24.70",
+      "normalization_type": "dynamic",
+      "target_offset": "0.10"
+    },
+    "pass2": {
+      "input_i": "-18.46",
+      "input_tp": "-1.93",
+      "input_lra": "5.80",
+      "input_thresh": "-29.11",
+      "output_i": "-14.13",
+      "output_tp": "-1.50",
+      "output_lra": "4.70",
+      "output_thresh": "-24.72",
+      "normalization_type": "dynamic",
+      "target_offset": "0.13"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "input_hash": "099361795485db2c",
+  "inputs": {
+    "v": 1,
+    "backend": "wan",
+    "keyframe": "fddf243d27507421",
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. tiny bubbles rise and pop, opening small holes across the surface, steam drifts",
+    "negative": "blurry, distorted face, deformed hands, extra fingers, text, watermark, subtitles, still image, overexposed, low quality",
+    "seed": 204,
+    "params": {
+      "model": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+      "width": 480,
+      "height": 832,
+      "num_frames": 121,
+      "fps": 24,
+      "steps": 30,
+      "guidance": 5.0,
+      "dtype": "fp16"
+    }
+  },
+  "created": "2026-11-25T13:26:28+00:00",
+  "run_id": "20261125T132628Z",
+  "source": "kaggle"
+}

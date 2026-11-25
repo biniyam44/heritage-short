@@ -1,0 +1,13 @@
+{
+  "input_hash": "af9a6fffc369f895",
+  "inputs": {
+    "v": 1,
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "style": "warm, slow and tender, like telling a story at bedtime",
+    "text": "ምጣዱ ሲሞቅ፣ ሊጡን በቀስታ ታፈሳለች።",
+    "language": "am"
+  },
+  "created": "2026-11-24T18:47:28+00:00",
+  "run_id": "20261124T184702Z"
+}

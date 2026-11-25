@@ -1,0 +1,269 @@
+{
+  "$schema": "./schema/storyboard.schema.json",
+  "version": 1,
+  "title": "ፀሐይ ሳትወጣ - Before the Sun Rises",
+  "logline": "Before dawn a mother bakes injera for her family; when her son wakes, he offers her the first gursha.",
+  "language": {
+    "code": "am",
+    "name": "Amharic"
+  },
+  "audience": "Ethiopian families, young Ethiopians and Ethiopians abroad who miss the feeling of home; mostly watching on phones",
+  "style": {
+    "visual": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm",
+    "reference_prompt": "Style frame: the corner of a dim rural Ethiopian kitchen at dawn, smoke-darkened mud walls, a small wood fire, a beam of soft window light through drifting smoke, clay pots on the earthen floor",
+    "seed": 21
+  },
+  "characters": [
+    {
+      "id": "mother",
+      "description": "a fictional Ethiopian mother in her forties from the Ethiopian highlands, dark brown skin, a warm tired face, wearing an everyday patterned cotton dress, a dark cardigan and a colourful headscarf tied at the back of her head",
+      "real_person": false,
+      "seed": 32
+    },
+    {
+      "id": "son",
+      "description": "a fictional twelve-year-old Ethiopian boy from the Ethiopian highlands, dark brown skin, short tightly curled black hair, a plain blue sweater, a sleepy gentle face",
+      "real_person": false,
+      "seed": 32
+    }
+  ],
+  "voice": {
+    "name": "Sulafat",
+    "style": "warm, slow and tender, like telling a story at bedtime",
+    "real_person": false
+  },
+  "music": {
+    "prompt": "Ethiopian-inspired instrumental film score, gentle krar lyre melody, soft bowed masenqo, airy washint bamboo flute, slow tempo, warm tender morning mood, tizita scale, sparse, leaves space for narration, no vocals",
+    "lyrics": "[Instrumental]",
+    "seed": 42,
+    "alternatives": [
+      {
+        "prompt": "Slow, sparse, intimate instrumental for a quiet family scene at dawn. A solo plucked lyre plays a gentle pentatonic melody in a minor mode, a soft breathy bamboo flute answers, a low bowed string holds long notes underneath. East African highland folk feel, warm room sound, about 60 BPM, no drums, no vocals.",
+        "seed": 7
+      },
+      {
+        "prompt": "Slow, sparse, intimate instrumental for a quiet family scene at dawn. A solo plucked lyre plays a gentle pentatonic melody in a minor mode, a soft breathy bamboo flute answers, a low bowed string holds long notes underneath. East African highland folk feel, warm room sound, about 60 BPM, no drums, no vocals.",
+        "seed": 8
+      },
+      {
+        "prompt": "Ethiopian tizita-style instrumental ballad, slow and nostalgic, pentatonic minor scale. A single plucked krar lyre leads the melody, a one-string masenqo fiddle sustains long mournful notes, a soft washint flute breathes between phrases. Acoustic, intimate, no percussion, no vocals.",
+        "seed": 7
+      },
+      {
+        "prompt": "Ethiopian tizita-style instrumental ballad, slow and nostalgic, pentatonic minor scale. A single plucked krar lyre leads the melody, a one-string masenqo fiddle sustains long mournful notes, a soft washint flute breathes between phrases. Acoustic, intimate, no percussion, no vocals.",
+        "seed": 8
+      },
+      {
+        "prompt": "Minimal acoustic ambient score, very slow and calm. Soft fingerpicked lyre notes with lots of space between phrases, an airy wooden flute, long sustained low string tones, gentle warmth like early morning light. No drums, no vocals, no synthesizers.",
+        "seed": 7
+      },
+      {
+        "prompt": "Minimal acoustic ambient score, very slow and calm. Soft fingerpicked lyre notes with lots of space between phrases, an airy wooden flute, long sustained low string tones, gentle warmth like early morning light. No drums, no vocals, no synthesizers.",
+        "seed": 8
+      }
+    ]
+  },
+  "end_card": {
+    "lines": [
+      "ፀሐይ ሳትወጣ",
+      "Before the Sun Rises",
+      "Made with AI: Gemini (voice), FLUX.2 (images), Wan 2.2 (motion), ACE-Step (music). Fictional characters."
+    ],
+    "duration_s": 3
+  },
+  "shots": [
+    {
+      "id": "s01",
+      "purpose": "I want viewers to see that a mother’s day begins before the rest of the family wakes up.",
+      "duration_s": 8,
+      "characters": [
+        "mother"
+      ],
+      "keyframe_prompt": "Wide shot in dark blue pre-dawn light: the mother stepping through a wooden door into the dark kitchen, the room lit only by the glow of a small wood fire in a round mud stove",
+      "motion": {
+        "backend": "kenburns",
+        "camera": "push_in"
+      },
+      "narration": "ፀሐይ ሳትወጣ፣ እናት ተነስታ ሥራዋን ትጀምራለች።",
+      "subtitle_en": "Before the sun rises, the mother gets up and begins her work.",
+      "seed": 201,
+      "references": [
+        {
+          "photo": "references/photos/stove_injera_fire.jpg",
+          "shows": "a round mud stove with a wood fire under a large black clay mitad"
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "purpose": "This reminds young viewers how much preparation goes into the food they often take for granted.",
+      "duration_s": 8,
+      "keyframe_prompt": "Close-up, seen from her right side: a woman's single dark brown hand, in the sleeve of her dark cardigan, holds a wooden spoon and stirs thin grey-beige fermented teff batter in a wide clay pot on an earthen floor. The pot and the hand fill the frame. Only this one arm is in the picture, reaching in from the right edge of the frame; her other hand and her face are out of frame",
+      "motion": {
+        "backend": "wan",
+        "prompt": "her hand stirs the batter slowly in circles, small bubbles on the surface",
+        "camera": "static"
+      },
+      "narration": "ልጇ ገና ተኝቷል። እሷ ግን የተቦካውን ሊጥ ታዘጋጃለች።",
+      "subtitle_en": "Her son is still asleep, but she prepares the fermented batter.",
+      "seed": 202
+    },
+    {
+      "id": "s03",
+      "purpose": "I want younger Ethiopians to see the skill involved in making injera the traditional way.",
+      "duration_s": 8,
+      "keyframe_prompt": "Close-up of a woman's dark brown forearm and hand, the sleeve of her dark cardigan pushed up to the elbow, pouring thin creamy teff batter from a small tin can in a slow spiral onto a very large flat round black clay mitad, about 60 cm across, set in a round mud stove with a wood fire glowing underneath; her face is out of frame",
+      "motion": {
+        "backend": "wan",
+        "prompt": "her hand keeps the can tilted over the mitad and pours one thin stream of batter in a slow spiral until the end of the clip, steam rises",
+        "camera": "static"
+      },
+      "narration": "ምጣዱ ሲሞቅ፣ ሊጡን በቀስታ ታፈሳለች።",
+      "subtitle_en": "When the mitad is hot, she slowly pours the batter.",
+      "seed": 203,
+      "references": [
+        {
+          "photo": "references/photos/pouring_spiral.jpg",
+          "shows": "a hand pouring teff batter from a can in a spiral onto a mitad on a mud stove"
+        },
+        {
+          "photo": "references/photos/stove_injera_fire.jpg",
+          "shows": "a round mud stove with a wood fire under a large black clay mitad"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "purpose": "The familiar texture and rising steam are meant to remind Ethiopians living abroad of fresh injera at home.",
+      "duration_s": 8,
+      "keyframe_prompt": "Extreme close-up of injera cooking on a black clay mitad: a thin, pale beige, spongy flatbread whose whole surface is covered with thousands of tiny holes called eyes, steam rising",
+      "motion": {
+        "backend": "wan",
+        "prompt": "tiny bubbles rise and pop, opening small holes across the surface, steam drifts",
+        "camera": "push_in"
+      },
+      "narration": "እንጀራው ላይ ዓይን ይወጣል። የአዲስ እንጀራ ሽታ ቤቱን ይሞላል።",
+      "subtitle_en": "Eyes appear on the injera. The smell of fresh injera fills the house.",
+      "seed": 204,
+      "references": [
+        {
+          "photo": "references/photos/injera_texture.jpg",
+          "shows": "the surface of injera, covered with tiny holes called eyes"
+        },
+        {
+          "photo": "references/photos/stove_injera_steam.jpg",
+          "shows": "injera cooking on a black clay mitad on a mud stove, with steam"
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "purpose": "I want the audience to notice the patience and repeated work behind a meal that may seem ordinary.",
+      "duration_s": 8,
+      "keyframe_prompt": "Seen from above: only a woman's dark brown hands, in the sleeves of her dark cardigan, both reaching in from the bottom edge of the frame and lifting the near edge of one large, thin, round injera off a black clay mitad on a round mud stove. The top of the injera is covered with thousands of tiny holes called eyes. Steam rising, a wood fire glowing below; her head and face are outside the frame",
+      "motion": {
+        "backend": "wan",
+        "prompt": "her hands slowly lift the edge of the injera off the griddle, steam rises",
+        "camera": "static"
+      },
+      "narration": "አንዱን አውጥታ ሌላውን ትጋግራለች። ለቤተሰቧ በቂ እስኪሆን ድረስ።",
+      "subtitle_en": "She takes one out and bakes the next, until there is enough for her family.",
+      "seed": 226,
+      "references": [
+        {
+          "photo": "references/photos/stove_injera_steam.jpg",
+          "shows": "injera cooking on a black clay mitad on a mud stove, with steam"
+        },
+        {
+          "photo": "references/photos/injera_texture.jpg",
+          "shows": "the surface of injera, covered with tiny holes called eyes"
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "purpose": "Showing the boy wake up after his mother has been working helps younger viewers see how easily they can overlook her efforts.",
+      "duration_s": 8,
+      "characters": [
+        "son"
+      ],
+      "keyframe_prompt": "The son walking sleepily into the kitchen doorway in soft morning light, rubbing his eyes",
+      "motion": {
+        "backend": "kenburns",
+        "camera": "push_in"
+      },
+      "narration": "ልጇ ከእንቅልፉ ነቅቶ ወደ እናቱ ይመጣል።",
+      "subtitle_en": "Her son wakes up and comes to his mother.",
+      "seed": 206
+    },
+    {
+      "id": "s07",
+      "purpose": "I want families to recognize how sharing a meal around the mesob brings people together.",
+      "duration_s": 8,
+      "characters": [
+        "mother",
+        "son"
+      ],
+      "keyframe_prompt": "The mother and her twelve-year-old son, a boy in a plain blue sweater, sitting on low wooden stools at a round woven mesob basket table; a large injera covered with tiny holes is spread over the top with orange-brown shiro stew in the middle; she ladles shiro onto the injera while the boy watches. The boy has short curly black hair and nothing on his head.",
+      "motion": {
+        "backend": "kenburns",
+        "camera": "push_in"
+      },
+      "narration": "እናቱ እንጀራና ሽሮ ታቀርባለች። ልጇም አጠገቧ ይቀመጣል።",
+      "subtitle_en": "His mother serves injera and shiro. He sits down beside her.",
+      "seed": 228,
+      "references": [
+        {
+          "photo": "references/photos/injera_stack_eyes.jpg",
+          "shows": "cooked injera, a thin pale round flatbread covered with tiny holes"
+        }
+      ]
+    },
+    {
+      "id": "s08",
+      "purpose": "The son’s gursha shows young viewers that even a small gesture can express gratitude to their parents.",
+      "duration_s": 8,
+      "characters": [
+        "mother",
+        "son"
+      ],
+      "keyframe_prompt": "Close-up at the mesob: the twelve-year-old boy in a blue sweater holds a small rolled bite of injera and shiro up to his mother's mouth, a gursha; she smiles in surprise, warm morning light. The boy has short curly black hair and nothing on his head.",
+      "motion": {
+        "backend": "kenburns",
+        "camera": "push_in"
+      },
+      "narration": "ዛሬ ግን ልጇ ከመብላቱ በፊት፣ መጀመሪያ ለእናቱ ጉርሻ ያቀርብላታል።",
+      "subtitle_en": "But today, before he eats, her son first offers his mother a gursha.",
+      "seed": 219,
+      "references": [
+        {
+          "photo": "references/photos/injera_stack_eyes.jpg",
+          "shows": "cooked injera, a thin pale round flatbread covered with tiny holes"
+        }
+      ]
+    },
+    {
+      "id": "s09",
+      "purpose": "I want viewers to leave the film remembering the warmth of home and appreciating the people who care for them.",
+      "duration_s": 8,
+      "characters": [
+        "mother",
+        "son"
+      ],
+      "keyframe_prompt": "Wide shot of the mother and son sitting together at a round woven mesob basket table sharing injera, morning sunlight now filling the small mud-walled kitchen",
+      "motion": {
+        "backend": "kenburns",
+        "camera": "pull_out"
+      },
+      "narration": "አንዳንዴ ፍቅርን ለመግለጽ ቃል አያስፈልግም። አንዲት ጉርሻ ትበቃለች።",
+      "subtitle_en": "Sometimes love needs no words. One shared bite is enough.",
+      "seed": 209,
+      "references": [
+        {
+          "photo": "references/photos/injera_stack_eyes.jpg",
+          "shows": "cooked injera, a thin pale round flatbread covered with tiny holes"
+        }
+      ]
+    }
+  ]
+}

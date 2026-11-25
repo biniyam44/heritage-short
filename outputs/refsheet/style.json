@@ -1,0 +1,16 @@
+{
+  "input_hash": "f4e62c3eb98270e6",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. Style frame: the corner of a dim rural Ethiopian kitchen at dawn, smoke-darkened mud walls, a small wood fire, a beam of soft window light through drifting smoke, clay pots on the earthen floor",
+    "seed": 21,
+    "size": [
+      720,
+      1280
+    ],
+    "refs": []
+  },
+  "created": "2026-11-25T05:57:47+00:00",
+  "run_id": "20261125T055730Z"
+}

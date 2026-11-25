@@ -1,0 +1,13 @@
+{
+  "input_hash": "e95a4c90029443d8",
+  "inputs": {
+    "v": 1,
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "style": "warm, slow and tender, like telling a story at bedtime",
+    "text": "ፀሐይ ሳትወጣ፣ እናት ተነስታ ሥራዋን ትጀምራለች።",
+    "language": "am"
+  },
+  "created": "2026-11-24T18:47:12+00:00",
+  "run_id": "20261124T184702Z"
+}

@@ -1,0 +1,19 @@
+{
+  "input_hash": "9a29e70bd55e50af",
+  "inputs": {
+    "v": 1,
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "prompt": "Warm realistic documentary photograph inside a dim traditional rural Ethiopian highland home: smoke-darkened mud and stone walls, an earthen floor, light from a small window and a wood fire, warm earth tones, gentle film grain, 35mm. Wide shot in dark blue pre-dawn light: the mother stepping through a wooden door into the dark kitchen, the room lit only by the glow of a small wood fire in a round mud stove a fictional Ethiopian mother in her forties from the Ethiopian highlands, dark brown skin, a warm tired face, wearing an everyday patterned cotton dress, a dark cardigan and a colourful headscarf tied at the back of her head. Reference images: image 1 shows the mother: keep this person's face, skin tone and clothes; image 2 is a real photo of a round mud stove with a wood fire under a large black clay mitad: make them look like the photo. Follow the description above for pose, framing and action.",
+    "seed": 201,
+    "size": [
+      720,
+      1280
+    ],
+    "refs": [
+      "550ea87aa00c9aa5",
+      "7fcb86a42e2852c4"
+    ]
+  },
+  "created": "2026-11-25T05:58:05+00:00",
+  "run_id": "20261125T055730Z"
+}

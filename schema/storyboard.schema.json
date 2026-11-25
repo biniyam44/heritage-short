@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "storyboard.schema.json",
+  "title": "Heritage Short storyboard: the contract between pipeline stages",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "title", "language", "audience", "style", "characters", "voice", "music", "end_card", "shots"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "version": {"const": 1},
+    "example": {"type": "boolean", "description": "true only for the shipped placeholder story; `make draft` may replace it"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 80},
+    "logline": {"type": "string", "maxLength": 300},
+    "language": {
+      "type": "object", "additionalProperties": false, "required": ["code", "name"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$", "description": "BCP-47 code of the narration language, e.g. am, ti, en"},
+        "name": {"type": "string", "minLength": 2}
+      }
+    },
+    "audience": {"type": "string", "minLength": 3, "description": "who the film is for"},
+    "style": {
+      "type": "object", "additionalProperties": false, "required": ["visual", "reference_prompt"],
+      "properties": {
+        "visual": {"type": "string", "minLength": 10, "description": "style prefix added to every image and motion prompt"},
+        "reference_prompt": {"type": "string", "minLength": 10, "description": "the style frame of the reference sheet"},
+        "motion_negative": {"type": "string"},
+        "seed": {"type": "integer", "minimum": 0}
+      }
+    },
+    "characters": {"type": "array", "maxItems": 6, "items": {"$ref": "#/$defs/character"}},
+    "voice": {
+      "type": "object", "additionalProperties": false, "required": ["name", "style", "real_person"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "description": "TTS voice name, e.g. Sulafat, Gacrux, Charon"},
+        "style": {"type": "string", "description": "delivery hint sent as speech_metadata.style; may be empty"},
+        "real_person": {"type": "boolean", "description": "true if the voice is, or imitates, a real person"},
+        "consent_id": {"type": "string", "pattern": "^C[0-9]+$"}
+      },
+      "if": {"properties": {"real_person": {"const": true}}},
+      "then": {"required": ["consent_id"]}
+    },
+    "music": {
+      "type": "object", "additionalProperties": false, "required": ["prompt", "seed"],
+      "properties": {
+        "prompt": {"type": "string", "minLength": 5, "maxLength": 512},
+        "lyrics": {"type": "string"},
+        "seed": {"type": "integer", "minimum": 0},
+        "alternatives": {
+          "type": "array", "maxItems": 6,
+          "description": "optional: other prompt/seed pairs rendered in the same GPU run, to listen to and pick from",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["prompt", "seed"],
+            "properties": {"prompt": {"type": "string", "minLength": 5, "maxLength": 512},
+                           "seed": {"type": "integer", "minimum": 0}}
+          }
+        }
+      }
+    },
+    "end_card": {
+      "type": "object", "additionalProperties": false, "required": ["lines"],
+      "properties": {
+        "lines": {"type": "array", "minItems": 1, "maxItems": 6, "items": {"type": "string", "minLength": 1, "maxLength": 120}},
+        "duration_s": {"type": "number", "minimum": 2, "maximum": 4}
+      }
+    },
+    "shots": {"type": "array", "minItems": 8, "maxItems": 12, "items": {"$ref": "#/$defs/shot"}}
+  },
+  "$defs": {
+    "character": {
+      "type": "object", "additionalProperties": false, "required": ["id", "description", "real_person"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "description": {"type": "string", "minLength": 10, "description": "visual description repeated in every prompt (no names)"},
+        "real_person": {"type": "boolean", "description": "true if this depicts a real, identifiable person"},
+        "consent_id": {"type": "string", "pattern": "^C[0-9]+$"},
+        "reference_photo": {"type": "string", "description": "optional path to a real photo used as the reference"},
+        "seed": {"type": "integer", "minimum": 0}
+      },
+      "allOf": [
+        {"if": {"properties": {"real_person": {"const": true}}}, "then": {"required": ["consent_id"]}},
+        {"if": {"required": ["reference_photo"]}, "then": {"properties": {"real_person": {"const": true}}}}
+      ]
+    },
+    "shot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "purpose", "duration_s", "keyframe_prompt", "motion", "narration", "subtitle_en", "seed"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^s[0-9]{2}$"},
+        "purpose": {"type": "string", "minLength": 5, "description": "why this shot exists (goes into DESIGN.md)"},
+        "duration_s": {"type": "number", "minimum": 3, "maximum": 15},
+        "characters": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "keyframe_prompt": {"type": "string", "minLength": 10},
+        "image": {"type": "string", "description": "optional: use this file (e.g. an archival photo) instead of generating"},
+        "references": {
+          "type": "array", "maxItems": 3,
+          "description": "optional: real photos (objects or places, no faces) that show the image model what something looks like",
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["photo", "shows"],
+            "properties": {"photo": {"type": "string"}, "shows": {"type": "string", "minLength": 3}}
+          }
+        },
+        "motion": {
+          "type": "object", "additionalProperties": false, "required": ["backend"],
+          "properties": {
+            "backend": {"enum": ["wan", "kenburns"]},
+            "prompt": {"type": "string", "description": "what moves in the shot (wan)"},
+            "camera": {"enum": ["push_in", "pull_out", "pan_left", "pan_right", "tilt_up", "tilt_down", "static"]}
+          },
+          "if": {"properties": {"backend": {"const": "wan"}}},
+          "then": {"required": ["prompt"]}
+        },
+        "narration": {"type": "string", "description": "spoken line in the narration language; empty = silent beat"},
+        "subtitle_en": {"type": "string", "description": "English subtitle for this line"},
+        "seed": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

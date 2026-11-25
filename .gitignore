@@ -1,0 +1,13 @@
+# secrets
+.env
+private_terms.txt
+kaggle.json
+access_token
+# local environments and scratch
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+build/
+inbox/
+*.tmp.*
