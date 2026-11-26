@@ -1,8 +1,7 @@
 # Experiments
 
-_Template: about 10 entries are expected. Only record what you actually ran; cite the `run_id` from
-`runs.jsonl` or the sidecar `.json` as evidence. The candidates below fit this pipeline. Delete the ones you
-don't run._
+_I log about ten experiments, only ones I actually ran, each citing the `run_id` from `runs.jsonl` or a
+sidecar `.json` as evidence. The candidate list below is my plan; finished entries go in the Log._
 
 Format for each entry:
 
@@ -36,4 +35,4 @@ Decision:   <kept / reverted / next step>
 
 ## Log
 
-_(your entries here)_
+_(my entries here)_

@@ -13,3 +13,5 @@ inbox/
 *.tmp.*
 # local editor and agent settings
 .claude/
+# personal study notes, not part of the submission
+notes/

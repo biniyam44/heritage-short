@@ -1,7 +1,7 @@
 # The Heritage Short: an AI film pipeline
 
 A 60–90 s short about a person, place or story that matters to my family. It is narrated in
-_<your language>_ with English subtitles, has an original score ducked under the voice and ends with an
+Amharic with English subtitles, has an original score ducked under the voice and ends with an
 AI-disclosure end card. It is exported as **vertical 9:16** (main) and horizontal 16:9.
 
 `storyboard.json` is the contract between the stages. Every stage is one script in `pipeline/` that
@@ -21,7 +21,7 @@ make test                    # unit tests + "edit one line, only that shot regen
 For real runs:
 
 ```bash
-cp .env.example .env         # paste your own keys (never commit .env)
+cp .env.example .env         # then paste the API keys in (never commit .env)
 make smoke                   # one tiny call per provider; latency goes to runs.jsonl
 make film                    # all stages, cached; final files in outputs/film/
 ```
@@ -55,7 +55,7 @@ ID. Every model call adds one line to `runs.jsonl` (model, params, seed, latency
 | `make costs` | writes the measured table in `COSTS.md` from `runs.jsonl` |
 | `make site` | writes `index.html`, a Screening Room page for the film built from the repo's own files: both cuts and the radio cut, every shot's lines, purpose and prompts, and the telemetry. Publish it with GitHub Pages (Settings → Pages → branch `main`, folder `/`) |
 | `make consent` | shows the consent gate status |
-| `make portraits N=3` | face candidates per character; put the seed you like into `characters[].seed` |
+| `make portraits N=3` | face candidates per character; put the chosen seed into `characters[].seed` |
 | `make kaggle-push` / `kaggle-status` / `kaggle-pull` | GPU jobs on Kaggle (`KIND=shots` or `KIND=music`) |
 | `make kaggle-import KIND=shots ZIP=...` | manual fallback: import a downloaded Kaggle output zip |
 | `make <stage>` | run one stage: `draft keyframes shots music narration assemble` |
@@ -91,5 +91,5 @@ shot's `motion.backend` to `"kenburns"` to make that its final look.
 ## AI disclosure
 
 The images, motion, music, narration voice and the first draft of the storyboard were generated with AI
-models (listed above). Story, direction, edits and decisions: _<your name>_. The film carries a visible
+models (listed above). The story, direction, edits and decisions are mine. The film carries a visible
 "Made with AI" end card, MP4 metadata saying so, and the platform's AI label when posted.

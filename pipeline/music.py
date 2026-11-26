@@ -1,12 +1,12 @@
 """Stage 4: original score with ACE-Step 1.5 (instrumental, one track for the whole film).
 
-  backend "acestep_api": a server you start yourself, e.g. on your Mac (see kaggle/acestep_music.py)
+  backend "acestep_api": a separately started server, e.g. on a Mac (see kaggle/acestep_music.py)
   backend "kaggle":      the same worker on a Kaggle GPU (`make kaggle-push KIND=music`)
 Until the score exists a placeholder pad stands in, so the film still assembles; `make check` flags it.
 
 Choosing a score by ear: music.alternatives lists other prompt/seed pairs. They are rendered in the same GPU
 run and land in outputs/music/candidates/ (v1.m4a, v2.m4a, ... with index.md saying which is which). Copy the
-prompt and seed you like into music.prompt / music.seed: that take is already in inbox/, so `make music` just
+chosen prompt and seed into music.prompt / music.seed: that take is already in inbox/, so `make music` just
 imports it as the score, with no new GPU run.
 """
 from __future__ import annotations

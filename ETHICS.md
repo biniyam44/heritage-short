@@ -10,7 +10,7 @@ Columns are parsed by `pipeline/consent.py`: **ID** (C1, C2, ...) · **person** 
 **relationship** · **scope** (`likeness`, `voice`, `name`, `story`: list what they agreed to) · **how**
 (e.g. "verbal, recorded phone call", "written WhatsApp message", "signed form") · **date** (YYYY-MM-DD) ·
 **public** (`yes` = agreed to public posting on social media + a public GitHub repo) · **withdrawal** (how
-they can withdraw, and what you will do).
+they can withdraw, and what I will do).
 
 | ID | Person | Relationship | Scope | How | Date | Public | Withdrawal |
 |---|---|---|---|---|---|---|---|
@@ -58,5 +58,5 @@ a prompt containing them unless I run with `ALLOW_PRIVATE=1` after deciding it i
 
 ## Representation and sensitivity
 
-_<Your notes: how you checked the visuals respect the person/culture (dress, places, rituals), what you
+_<My notes: how I checked that the visuals respect the culture (dress, places, rituals), what I
 changed after feedback, and anything deliberately not shown.>_

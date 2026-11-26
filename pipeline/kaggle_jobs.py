@@ -80,7 +80,7 @@ def kaggle(*args, check: bool = True, live: bool = False) -> subprocess.Complete
 
 
 def user() -> str:
-    return os.environ.get("KAGGLE_USERNAME", "").strip() or fail("set KAGGLE_USERNAME in .env (your Kaggle handle)")
+    return os.environ.get("KAGGLE_USERNAME", "").strip() or fail("set KAGGLE_USERNAME in .env (the Kaggle handle)")
 
 
 def wait_for_version(kind: str, ds: str, run_id: str, minutes: int = 15) -> None:

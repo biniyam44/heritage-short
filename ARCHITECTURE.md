@@ -1,7 +1,7 @@
 # Architecture
 
 ```
-story/brief.md ──► [1 draft] ──► storyboard.json  ◄── you edit it; validated against schema/ every stage
+story/brief.md ──► [1 draft] ──► storyboard.json  ◄── I edit it; validated against schema/ every stage
                                      │
           ┌──────────────────────────┼───────────────────────────┬─────────────────────┐
           ▼                          ▼                           ▼                     ▼
@@ -26,19 +26,19 @@ story/brief.md ──► [1 draft] ──► storyboard.json  ◄── you edit
 
 | Contract | Owner | Purpose |
 |---|---|---|
-| `storyboard.json` + `schema/storyboard.schema.json` | you (the draft stage writes it once) | **what** the film is: shots, prompts, narration, subtitles, seeds, characters, consent IDs |
-| `config.toml` | you | **how**: model IDs, sizes, steps, mix settings, prices. No secrets |
+| `storyboard.json` + `schema/storyboard.schema.json` | me (the draft stage can write a first version) | **what** the film is: shots, prompts, narration, subtitles, seeds, characters, consent IDs |
+| `config.toml` | me | **how**: model IDs, sizes, steps, mix settings, prices. No secrets |
 | `outputs/<stage>/<item>.<ext>` + `<item>.json` sidecar | the stage | the artifact plus its provenance: input hash, exact inputs, run ID |
 | `runs.jsonl` | `call_model()` and the GPU workers | one line per model call: model, params, seed, latency, cost, status, attempt |
 | `build/<mode>/kaggle/<kind>/jobs.json` | stage 3 / 4 | the GPU job contract: params + one job per missing clip, keyed by input hash |
-| `.env` (git-ignored) | you | API keys only |
+| `.env` (git-ignored) | me | API keys only |
 
 Every stage validates the storyboard first: JSON Schema (draft 2020-12), then the cross-field checks a
 schema can't express (unique shot IDs, referenced characters exist, image files exist). A bad edit fails
 fast with the path to the bad field, before any paid call.
 
-The draft stage never overwrites your storyboard. It writes `outputs/script/storyboard.draft.json`, and it
-replaces `storyboard.json` only while that file is still the shipped example. Once `storyboard.json` is yours,
+The draft stage never overwrites my storyboard. It writes `outputs/script/storyboard.draft.json`, and it
+replaces `storyboard.json` only while that file is still the shipped example. Once `storyboard.json` is mine,
 the stage makes no model call at all, so `make film` from a clean clone (no `.env`) runs on cached outputs;
 `FORCE=draft` writes a fresh draft next to it for comparison.
 

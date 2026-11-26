@@ -8,11 +8,11 @@ cache key includes its reference images' hashes, so changing a character's descr
 the shots that character appears in.
 
 Picking faces: `make portraits N=3` renders N portrait candidates per character (seeds seed, seed+1, ...)
-into outputs/refsheet/. Put the seed you like into characters[].seed and run `make keyframes`: that portrait
+into outputs/refsheet/. Put the chosen seed into characters[].seed and run `make keyframes`: that portrait
 is already cached, so only the keyframes are generated.
 
 Picking a keyframe: `ONLY=s07 make keyframe-candidates N=3` renders N versions of a shot (seeds seed, seed+1,
-...) into outputs/keyframes/candidates/. Put the seed you like into the shot's seed and run `make keyframes`:
+...) into outputs/keyframes/candidates/. Put the chosen seed into the shot's seed and run `make keyframes`:
 the picked file is copied, not generated again (same inputs, so no second model call).
 """
 from __future__ import annotations
@@ -44,7 +44,7 @@ def generate(stage, item, out, prompt, seed, w, h, refs=(), label="", model=None
 
     def make(tmp):
         if reuse is not None and reuse.exists() and (read_meta(reuse) or {}).get("input_hash") == sha(inputs):
-            shutil.copy(reuse, tmp)          # the candidate you picked has exactly these inputs: no second call
+            shutil.copy(reuse, tmp)          # the picked candidate has exactly these inputs: no second call
             say(stage, f"{item}: using the picked candidate {reuse.name} (no model call)")
             return
         if MOCK:
@@ -98,7 +98,7 @@ def main() -> None:
             if not c.get("reference_photo"):
                 for k in range(a.candidates):
                     portrait(c, c.get("seed", 7) + k, pmodel, rw, rh)
-        say("keyframes", f"candidates in {OUT / 'refsheet'}: put the seed you like into characters[].seed")
+        say("keyframes", f"candidates in {OUT / 'refsheet'}: put the chosen seed into characters[].seed")
         return
 
     # 1) one portrait per character (or its consented real photo) + one style frame
@@ -154,7 +154,7 @@ def main() -> None:
         generate("keyframes", s["id"], out, prompt, s["seed"], w, h, refs, label=s["keyframe_prompt"],
                  reuse=cand / f"{s['id']}_s{s['seed']}.png")
     if a.shot_candidates:
-        say("keyframes", f"candidates in {OUT / 'keyframes' / 'candidates'}: put the seed you like into the shot's seed")
+        say("keyframes", f"candidates in {OUT / 'keyframes' / 'candidates'}: put the chosen seed into the shot's seed")
         return
     say("keyframes", f"done -> {OUT / 'keyframes'}")
 

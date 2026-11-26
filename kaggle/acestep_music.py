@@ -3,7 +3,7 @@
 POST /release_task -> data.task_id; POST /query_result -> status 0 running / 1 done / 2 failed,
 result = JSON string with items[].file ("/v1/audio?path=..."); GET that URL for the audio.
 
-  --api-url http://localhost:8001   use a server you already run, e.g. on your Mac:
+  --api-url http://localhost:8001   use an already running server, e.g. on a Mac:
         git clone https://github.com/ACE-Step/ACE-Step-1.5 ~/ACE-Step-1.5 && cd ~/ACE-Step-1.5 && uv sync
         ACESTEP_INIT_LLM=false uv run acestep-api            # first start downloads ~10 GB of checkpoints
   (no --api-url: Kaggle/Colab GPU)  clones ACE-Step-1.5, `uv sync`, starts the server here, then generates

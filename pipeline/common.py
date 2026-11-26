@@ -247,7 +247,7 @@ def privacy_check(text: str, provider: str) -> None:
     hits = [t for t in terms if t.casefold() in text.casefold()]
     if hits:
         raise FatalError(f"text for {provider} contains private term(s) {hits}. "
-                         "Edit it, or rerun with ALLOW_PRIVATE=1 if you accept sending them.")
+                         "Edit it, or rerun with ALLOW_PRIVATE=1 to accept sending them.")
 
 
 # ---------------------------------------------------------------- ffmpeg helpers

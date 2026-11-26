@@ -1,8 +1,8 @@
 """Stage 1: draft storyboard.json from story/brief.md with the text model (Gemini).
 
-The LLM drafts; you own the result. The draft goes to outputs/script/storyboard.draft.json and only
-replaces storyboard.json while that file is still the shipped example, so a rerun never overwrites your
-edits. Once storyboard.json is yours the stage makes no model call (so `make film` works from a clean clone
+The LLM drafts; I own the result. The draft goes to outputs/script/storyboard.draft.json and only
+replaces storyboard.json while that file is still the shipped example, so a rerun never overwrites my
+edits. Once storyboard.json is mine the stage makes no model call (so `make film` works from a clean clone
 without keys); FORCE=draft writes a fresh draft next to it for comparison. Invalid JSON or schema errors are
 fed back to the model, up to 3 tries.
 """
@@ -57,7 +57,7 @@ def ask(prompt: str, attempt: int, brief_chars: int) -> tuple[str, str]:
 def main() -> None:
     brief = (ROOT / "story" / "brief.md").read_text(encoding="utf-8")
     if "TEMPLATE:" in brief:
-        say("draft", "story/brief.md is still the template: skipping (write your brief, then `make draft`)")
+        say("draft", "story/brief.md is still the template: skipping (write the brief first, then `make draft`)")
         return
     model = CONFIG["text"]["model"]
     schema = (ROOT / "schema" / "storyboard.schema.json").read_text()
@@ -87,13 +87,13 @@ def main() -> None:
 
     current = json.loads(STORYBOARD.read_text(encoding="utf-8"))
     if not current.get("example") and not forced("draft"):
-        # storyboard.json is yours: a new draft would be unused, and a clean clone must build without keys
-        say("draft", f"storyboard.json is yours: no draft needed (FORCE=draft writes a fresh one to {out} to compare)")
+        # storyboard.json is no longer the example: a new draft would be unused, and a clean clone must build without keys
+        say("draft", f"storyboard.json is no longer the example: no draft needed (FORCE=draft writes a fresh one to {out} to compare)")
         return
     generated = build("draft", out, inputs, make)
     if current.get("example"):
         shutil.copy(out, STORYBOARD)
-        say("draft", "storyboard.json now holds the draft. Read and edit every line: it is yours.")
+        say("draft", "storyboard.json now holds the draft. Read and edit every line before using it.")
     elif generated:
         say("draft", f"new draft at {out}; storyboard.json unchanged (merge by hand)")
 

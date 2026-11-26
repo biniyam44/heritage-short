@@ -1,7 +1,7 @@
 """Smoke test: one tiny call per provider, latency logged to runs.jsonl (stage "smoke").
 
-Only harmless test text is sent, never your story. Set SMOKE_TTS_TEXT to a short neutral sentence
-in your narration language to check that Gemini TTS speaks it.
+Only harmless test text is sent, never the story. Set SMOKE_TTS_TEXT to a short neutral sentence
+in the narration language to check that Gemini TTS speaks it.
 """
 from __future__ import annotations
 

@@ -51,7 +51,7 @@ def main() -> None:
     sb = json.loads(STORYBOARD.read_text(encoding="utf-8"))
     errors = schema_errors(sb)
     add(not errors, "storyboard matches schema", "; ".join(errors[:3]))
-    add(not sb.get("example"), "storyboard is your story", "still the shipped example" if sb.get("example") else "",
+    add(not sb.get("example"), "storyboard is the real story, not the example", "still the shipped example" if sb.get("example") else "",
         warn_only=MOCK)
     add(8 <= len(sb.get("shots", [])) <= 12, "8-12 shots", str(len(sb.get("shots", []))))
     cp = [] if errors else consent_problems(sb)

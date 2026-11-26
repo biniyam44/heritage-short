@@ -2,11 +2,11 @@
 
 `make shots` / `make music` write a **job bundle** for whatever is missing: `jobs.json`, the input keyframes,
 and the worker script itself. It goes in `build/real/kaggle/<kind>/` and `build/real/kaggle/<kind>.zip`.
-Results come back named `<input-hash>.mp4|wav` with a `runs.jsonl`. You put them in `inbox/<kind>/` and run
-`make <kind>` again to import them.
+Results come back named `<input-hash>.mp4|wav` with a `runs.jsonl`. They go in `inbox/<kind>/`, and
+`make <kind>` imports them.
 
 Before the first real run, benchmark one shot: `ONLY=s01 make shots`, then push. The kernel log shows the
-seconds per clip, so you can size the full batch.
+seconds per clip, which sizes the full batch.
 
 ## A. Automatic (kaggle CLI)
 
@@ -32,13 +32,13 @@ Use `KIND=music` for ACE-Step on Kaggle (set `[music].backend = "kaggle"` in `co
 ## B. Manual fallback (browser only)
 
 1. kaggle.com → Datasets → New dataset → upload `build/real/kaggle/shots.zip` (keep it private).
-2. New notebook → Settings: **Accelerator GPU T4 x2**, **Internet on** → Add input → your dataset.
+2. New notebook → Settings: **Accelerator GPU T4 x2**, **Internet on** → Add input → the job dataset.
 3. Run one cell: `!python /kaggle/input/*/wan22_i2v.py` (the script finds `jobs.json` itself; add `--limit 1` to benchmark).
 4. Output tab → download everything (a zip) → `make kaggle-import KIND=shots ZIP=~/Downloads/<file>.zip` → `make shots`.
 
 Colab: upload the zip, `!unzip shots.zip -d job && python job/wan22_i2v.py --jobs job/jobs.json --out out`, then zip `out/` and import it the same way.
 
-## C. Music on your Mac (no Kaggle)
+## C. Music on my Mac (no Kaggle)
 
 ACE-Step 1.5 supports Apple Silicon. In a separate terminal:
 
@@ -56,7 +56,7 @@ Set that shot's `"motion": {"backend": "kenburns", "camera": "push_in"}` in `sto
 local pan or zoom over the keyframe, which is free and instant, and it is the brief's accepted fallback.
 Faces are often better as Ken Burns anyway.
 
-## Known risks (unverified on a T4 until you run it)
+## Known risks (written before the first T4 run)
 
 - RAM: the worker loads the 11 GB text encoder first, encodes all prompts, frees it, then loads the transformer.
 - fp16: if clips come back black or NaN, the worker logs `blank or NaN frames`. Try `dtype = "bf16"` (slow on T4) or Ken Burns.

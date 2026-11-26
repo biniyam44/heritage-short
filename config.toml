@@ -38,7 +38,7 @@ dtype = "fp16"                      # T4 has no fast bf16
 negative = "blurry, distorted face, deformed hands, extra fingers, text, watermark, subtitles, still image, overexposed, low quality"
 
 [music]                             # stage 4: original score (kaggle/acestep_music.py)
-backend = "kaggle"                  # acestep_api = a server you start (e.g. on your Mac) | kaggle
+backend = "kaggle"                  # acestep_api = a separately started server (e.g. on a Mac) | kaggle
 api_url = "http://localhost:8001"   # override with ACESTEP_API_URL in .env
 model = "acestep-v15-turbo"
 steps = 8

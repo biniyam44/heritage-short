@@ -1,7 +1,5 @@
 # Design
 
-_Template. Every answer below must be yours, from real conversations and real tests._
-
 ## Audience and intent
 
 - **Who it is for:** _<e.g. my cousins abroad who never met her; age, what they know, the language they speak>_

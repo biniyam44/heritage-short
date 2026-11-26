@@ -1,7 +1,7 @@
 # Failures
 
-_Template: record real failures as they happen. Evidence = the `runs.jsonl` line (`status: "error"`), the
-kernel log, or the command output. How the pipeline handles each class of failure is in ARCHITECTURE.md →
+_I record real failures as they happen. Evidence: the `runs.jsonl` line (`status: "error"`), the
+kernel log in `outputs/logs/`, or the command output. How the pipeline handles each class of failure is in ARCHITECTURE.md →
 Failure handling._
 
 Format for each entry:
@@ -16,4 +16,4 @@ Prevention:    <test, check or retry rule added so it can't recur silently>
 
 ## Log
 
-_(your entries here)_
+_(my entries here)_

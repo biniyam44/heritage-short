@@ -47,7 +47,7 @@ mock: ## the whole pipeline offline, no API keys -> build/mock/
 radio: narration ## radio cut: narration + subtitles over placeholder music, on black
 	$(PY) -m pipeline.radio
 
-keys: $(DEPS) ## type your API keys into .env (input hidden)
+keys: $(DEPS) ## type the API keys into .env (input hidden)
 	$(PY) -m pipeline.setkeys
 
 portraits: $(DEPS) ## N face candidates per character (N=3; MODEL=@cf/... to compare); pick by setting its seed

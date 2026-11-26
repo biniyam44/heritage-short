@@ -28,8 +28,8 @@ _Generated 2026-11-25T10:17:35+00:00 from 124 logged calls in 20 runs (runs.json
 
 ## Notes
 
-_Your interpretation: which stage dominated time and GPU minutes, what drafting at 480p saved, what the
-whole film would cost on paid tiers, and what you would change for a 10-minute film._
+_My interpretation: which stage dominated time and GPU minutes, what drafting at 480p saved, what the
+whole film would cost on paid tiers, and what I would change for a 10-minute film._
 
 ### Music: GPU time correction
 
