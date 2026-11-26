@@ -2,6 +2,12 @@
 
 ## Consent records
 
+**No real person is shown or voiced in this film.** Both characters (the mother and the son) are
+fictional and generated, marked `"real_person": false` in `storyboard.json`, and the narrator is a
+stock Gemini TTS voice ("Sulafat"), also `"real_person": false`. So the table below has no rows, and
+`make consent` reports "real people in storyboard: none". The reference photos in `references/photos/`
+show objects only (one was cropped to remove a person); none is shown in the film.
+
 **Gate:** the pipeline refuses to generate an image, clip, voice or film of a character marked
 `"real_person": true` until this table has a complete row for its `consent_id`. A real person shown or voiced
 without a record here scores 0. Run `make consent` to check.

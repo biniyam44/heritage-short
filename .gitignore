@@ -15,3 +15,6 @@ inbox/
 .claude/
 # personal study notes, not part of the submission
 notes/
+# editor files
+.idea/
+.Rhistory

@@ -7,7 +7,18 @@ AI-disclosure end card. It is exported as **vertical 9:16** (main) and horizonta
 `storyboard.json` is the contract between the stages. Every stage is one script in `pipeline/` that
 reads it, writes `outputs/<stage>/` and skips any work whose inputs did not change.
 
-> Status: pipeline done and tested in mock mode. The story, film, user tests and results are TODO (see [PLAN.md](PLAN.md)).
+**The film:** "ፀሐይ ሳትወጣ: Before the Sun Rises", 76 s, Amharic narration with English subtitles.
+Watch it on the [Screening Room page](https://biniyam44.github.io/heritage-short/), or download the
+[9:16](https://biniyam44.github.io/heritage-short/outputs/film/heritage_9x16.mp4) and
+[16:9](https://biniyam44.github.io/heritage-short/outputs/film/heritage_16x9.mp4) files.
+
+**The pipeline in one line:** `storyboard.json` → keyframes (FLUX.2 klein on Cloudflare) → shots (Wan 2.2
+on a free Kaggle T4, or a Ken Burns zoom) → music (ACE-Step 1.5 on Kaggle) → narration (Gemini TTS) →
+assembly (FFmpeg) → `make check`.
+
+**What it cost:** $0 actually spent (free tiers only). Measured from `runs.jsonl`: 177 logged model calls
+(39 failed and retried or reported), 487 GPU minutes on Kaggle, and a $3.06 list-price equivalent if
+the same calls were paid. The table per stage and model is in [COSTS.md](COSTS.md).
 
 ## Quick start (clean clone)
 
