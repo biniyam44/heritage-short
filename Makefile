@@ -13,7 +13,7 @@ endif
 export RUN_ID MOCK FORCE ONLY ALLOW_PRIVATE ALLOW_FALLBACK
 
 STAGES := draft keyframes shots music narration assemble
-.PHONY: help setup validate film mock radio smoke costs check consent test clean-mock portraits keyframe-candidates \
+.PHONY: help setup validate film mock radio smoke costs site check consent test clean-mock portraits keyframe-candidates \
         kaggle-push kaggle-status kaggle-pull kaggle-import $(STAGES)
 
 help: ## list targets
@@ -61,6 +61,9 @@ smoke: $(DEPS) ## one tiny call per provider; latency logged to runs.jsonl
 
 costs: $(DEPS) ## summarise runs.jsonl into COSTS.md
 	$(PY) -m pipeline.costs
+
+site: $(DEPS) ## index.html: a Screening Room page for the film, from the repo's own files (GitHub Pages)
+	$(PY) -m pipeline.site
 
 check: $(DEPS) ## QA the deliverables against the brief (fails on problems)
 	$(PY) -m pipeline.check

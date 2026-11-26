@@ -11,3 +11,5 @@ __pycache__/
 build/
 inbox/
 *.tmp.*
+# local editor and agent settings
+.claude/

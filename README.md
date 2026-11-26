@@ -53,6 +53,7 @@ ID. Every model call adds one line to `runs.jsonl` (model, params, seed, latency
 | `make smoke` | calls each provider once with harmless text, logs latency |
 | `make check` | QA gate against the brief (length, sizes, codecs, loudness, subtitles, consent, stand-ins, secrets) |
 | `make costs` | writes the measured table in `COSTS.md` from `runs.jsonl` |
+| `make site` | writes `index.html`, a Screening Room page for the film built from the repo's own files: both cuts and the radio cut, every shot's lines, purpose and prompts, and the telemetry. Publish it with GitHub Pages (Settings → Pages → branch `main`, folder `/`) |
 | `make consent` | shows the consent gate status |
 | `make portraits N=3` | face candidates per character; put the seed you like into `characters[].seed` |
 | `make kaggle-push` / `kaggle-status` / `kaggle-pull` | GPU jobs on Kaggle (`KIND=shots` or `KIND=music`) |
